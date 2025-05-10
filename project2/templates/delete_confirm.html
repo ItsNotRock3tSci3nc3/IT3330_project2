@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delete Dependent</title>
+</head>
+<body>
+  <h1>Delete Dependent</h1>
+  {% if dependent %}
+    
+    <p>
+      Are you sure you want to delete the dependent 
+      <strong>{{ dependent.first_name }} {{ dependent.last_name }}</strong>?
+    </p>
+    <form method="post" action="{{ url_for('delete_dependent', dep_id=dependent.dependent_id) }}">
+      <button type="submit">Confirm Delete</button>
+      <a href="{{ url_for('index') }}">Cancel</a>
+    </form>
+  {% else %}
+    <p>Dependent not found.</p>
+    <a href="{{ url_for('index') }}">Back to Home</a>
+  {% endif %}
+</body>
+
+
+
+</html>
